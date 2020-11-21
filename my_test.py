@@ -12,7 +12,7 @@ session = Session()
 session.headers.update(headers)
 
 
-def test_access_to_10_tickers_sorted_by_volume():
+async def test_access_to_10_tickers_sorted_by_volume():
     parameters = {
         'sort': 'volume_24h',
         'limit': '10',
