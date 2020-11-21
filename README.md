@@ -1,1 +1,2 @@
-"# API_Coinmarket" 
+# CoinmarketCap API | Koshelek.ru test task
+
