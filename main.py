@@ -1,7 +1,7 @@
 import sys
-from requests import Session
 import json
 from datetime import datetime
+from requests import Session
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
 headers = {
@@ -23,5 +23,5 @@ def test_access_to_10_tickers_sorted_by_volume():
     data = json.loads(response.text)
 
     assert time_after_response - time_before_response < 500000
-    assert str(datetime.now().date()) in data['status']['timestamp']
+    assert str(datetime.utcnow().date()) in data['status']['timestamp']
     assert sys.getsizeof(data) < 10000
