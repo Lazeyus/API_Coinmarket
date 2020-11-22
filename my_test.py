@@ -12,7 +12,7 @@ session = Session()
 session.headers.update(headers)
 
 
-async def test_access_to_10_tickers_sorted_by_volume():
+def test_access_to_10_tickers_sorted_by_volume():
     parameters = {
         'sort': 'volume_24h',
         'limit': '10',
@@ -22,6 +22,6 @@ async def test_access_to_10_tickers_sorted_by_volume():
     time_after_response = datetime.now().microsecond
     data = json.loads(response.text)
 
-    assert time_after_response - time_before_response < 500000
-    assert str(datetime.utcnow().date()) in data['status']['timestamp']
-    assert sys.getsizeof(data) < 10000
+    assert time_after_response - time_before_response < 500000, "Response time is more than 500 ms"
+    assert str(datetime.utcnow().date()) in data['status']['timestamp'], "Date is out of scope"
+    assert sys.getsizeof(data) < 10000, "Response size is more than 10 Kbyte"
