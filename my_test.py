@@ -23,5 +23,5 @@ def test_access_to_10_tickers_sorted_by_volume():
     data = json.loads(response.text)
 
     assert time_after_response - time_before_response < 500000, "Response time is more than 500 ms"
-    assert str(datetime.utcnow().date()) in data['status']['timestamp'], "Date is out of scope"
+    assert str(datetime.utcnow().date()) in data['status']['timestamp'], "Date mismatch"
     assert sys.getsizeof(data) < 10000, "Response size is more than 10 Kbyte"
